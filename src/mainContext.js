@@ -13,13 +13,14 @@ export const MainContextProvider = ({ children }) => {
   const [number, setNumber] = useState(0);
 
   const increment = ( id ) => {
-    setNumber(number + id);
+    setNumber(prevNumber => prevNumber + id);
+    console.log("in increment method" , {number})
   };
-
+   
   const decrement = ( id ) => {
-    setNumber(number - id);
+    setNumber(prevNumber => prevNumber - id);
   };
-
+  console.log({number});
   return (
     <MainContext.Provider value={{ number, increment, decrement }}>
       {children}

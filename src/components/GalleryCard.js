@@ -1,6 +1,6 @@
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
+import { Button, CardActionArea } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
@@ -25,6 +25,9 @@ const GalleryCard = ({ img, id, title, onClick }) => {
         <Typography variant="h6" component="div" sx={{ margin: 0, padding: 0 }}>
           {title}
         </Typography>
+        <Button variant='outlined' color='success'>
+          Add to favorite
+        </Button>
       </CardContent>
     </Card>
     </CardActionArea>

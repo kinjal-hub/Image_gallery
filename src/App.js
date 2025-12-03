@@ -11,26 +11,23 @@ import CustomNavbar from './components/CustomNavbar';
 import Favorite from './pages/Favorite';
 import Contact from './pages/Contact';
 import Signin from './pages/Signin';
+import { MainContextProvider } from './mainContext';
 
 const themes = [customTheme, customTheme1, customTheme2]; // Array of themes
-
 function App() {
-  
   const [currentThemeIndex, setCurrentThemeIndex] = useState(0);
   useEffect(() => {
-    
     const intervalId = setInterval(() => {
       setCurrentThemeIndex(prevIndex => (prevIndex + 1) % themes.length);
     }, 10000);
-
-    
-    return () => clearInterval(intervalId);
+     return () => clearInterval(intervalId);
   }, []);
   
   return (
+    <MainContextProvider>
     <Router>
-    <div className="App">
-      <ThemeProvider theme={themes[currentThemeIndex]}>
+      <div className="App">
+       <ThemeProvider theme={themes[currentThemeIndex]}>
       <CssBaseline />
       <CustomNavbar />
       <Routes>
@@ -41,8 +38,9 @@ function App() {
             <Route path="/signin" element={<Signin />} />
       </Routes>
       </ThemeProvider>
-    </div>
-    </Router>
-  );
+      </div>
+      </Router>
+      </MainContextProvider>
+    );
 }
 export default App;

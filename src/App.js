@@ -11,7 +11,7 @@ import CustomNavbar from './components/CustomNavbar';
 import Favorite from './pages/Favorite';
 import Contact from './pages/Contact';
 import Signin from './pages/Signin';
-import { MainContextProvider } from './mainContext';
+
 
 const themes = [customTheme, customTheme1, customTheme2]; // Array of themes
 function App() {
@@ -24,7 +24,7 @@ function App() {
   }, []);
   
   return (
-    <MainContextProvider>
+    
     <Router>
       <div className="App">
        <ThemeProvider theme={themes[currentThemeIndex]}>
@@ -40,7 +40,7 @@ function App() {
       </ThemeProvider>
       </div>
       </Router>
-      </MainContextProvider>
+      
     );
 }
 export default App;

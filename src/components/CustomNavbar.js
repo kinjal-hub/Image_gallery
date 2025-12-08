@@ -6,8 +6,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import customTheme from '../theme';
+import { Link } from 'react-router-dom';
 
-// Define the navigation links
 const navLinks = [
   { name: 'Home', icon: <HomeIcon />, path: '/' },
   { name: 'Favorite', icon: <FavoriteIcon />, path: '/favorite' },
@@ -35,13 +35,13 @@ const CustomNavbar = () => {
     >
       <List>
         {navLinks.map((link) => (
-          <ListItem button key={link.name} component="a" href={link.path}>
+          <ListItem button key={link.name} component={Link} to={link.path}>
             {link.icon}
             <ListItemText primary={link.name} sx={{ marginLeft: 2 }} />
           </ListItem>
         ))}
         {/* Sign In is also a link in the mobile drawer */}
-        <ListItem button component="a" href="./pages/SignIn">
+        <ListItem button component={Link} to="./pages/SignIn">
             <AccountCircleIcon />
             <ListItemText primary="Sign In" sx={{ marginLeft: 2 }} />
         </ListItem>
@@ -89,7 +89,8 @@ const CustomNavbar = () => {
               <Button
                 key={link.name}
                 color="inherit"
-                href={link.path}
+                component={Link}
+                to={link.path}
                 startIcon={link.icon}
               >
                 {link.name}
@@ -97,8 +98,9 @@ const CustomNavbar = () => {
             ))}
             <Button
               color="inherit"
+              component={Link}
+              to="/signin"
               variant="outlined"
-              href="/signin"
               sx={{ ml: 2 }}
               startIcon={<AccountCircleIcon />}
             >

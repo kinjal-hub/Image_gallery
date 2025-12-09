@@ -1,32 +1,64 @@
 import { createContext, useState, useContext } from 'react';
+
 export const MainContext = createContext({
-  number: 0,
-  names: [], 
-  increment: (id) => {},
-  addName: (name) => {},
+  favoriteCards: [],
+  addFavoriteCard: (card) => {},
+  incrementQuantity: (cardId) => {},
+  decrementQuantity: (cardId) => {},
 });
 
 export const useMainContext = () => useContext(MainContext);
+
 export const MainContextProvider = ({ children }) => {
-  const [number, setNumber] = useState(0);
+  const [favoriteCards, setFavoriteCards] = useState([]);
   
-  const [names, setNames] = useState([]);
-  const increment = (id) => {
-    setNumber(prevNumber => prevNumber + id);
-    console.log("in increment method", { number });
+  const addFavoriteCard = (newCard) => {
+    setFavoriteCards(prevCards => {
+      const existingCardIndex = prevCards.findIndex(card => card.id === newCard.id);
+
+      if (existingCardIndex > -1) {
+        
+        const updatedCards = [...prevCards];
+        updatedCards[existingCardIndex] = {
+          ...updatedCards[existingCardIndex],
+          quantity: updatedCards[existingCardIndex].quantity + 1
+        };
+        return updatedCards;
+      } else {
+        
+        return [...prevCards, { ...newCard, quantity: 1 }];
+      }
+    });
+  };
+  const incrementQuantity = (cardId) => {
+    setFavoriteCards(prevCards =>
+      prevCards.map(card =>
+        card.id === cardId
+          ? { ...card, quantity: card.quantity + 1 }
+          : card
+      )
+    );
   };
 
-  const addName = (name) => {
-    setNames(prevNames => [...prevNames, name]);
+  const decrementQuantity = (cardId) => {
+    setFavoriteCards(prevCards =>
+      prevCards.map(card =>
+        card.id === cardId && card.quantity > 1
+          ? { ...card, quantity: card.quantity - 1 }
+          : card
+      )
+    );
+    
   };
-  console.log({ number });
-   return (
-    <MainContext.Provider value={{
-      number,
-      names, 
-      increment,
-      addName, 
-    }}>
+  return (
+    <MainContext.Provider
+      value={{
+        favoriteCards,
+        addFavoriteCard,
+        incrementQuantity,
+        decrementQuantity,
+      }}
+    >
       {children}
     </MainContext.Provider>
   );

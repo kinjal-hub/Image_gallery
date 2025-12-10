@@ -6,7 +6,7 @@ const ImageDetail = ({ imageId, onBackClick }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  
+  console.log(imageId);
   const fetchImageDetail = async () => {
     if (!imageId) return;
     try {

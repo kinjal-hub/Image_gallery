@@ -23,7 +23,7 @@ const GalleryCard = ({ img, id, title, onClick }) => {
           alignItems: 'center',
         }}
       >
-        <CardMedia component="img" height={250} image={img} alt={title} />
+        <CardMedia component="img" height={250}  image={img} alt={title} />
         <CardContent>
           <Typography variant="h6" component="div" sx={{ margin: 0, padding: 0 }}>
             {title}
@@ -32,7 +32,7 @@ const GalleryCard = ({ img, id, title, onClick }) => {
             Add to favorite
           </Button>
         </CardContent>
-      </Card>
+        </Card>
     </CardActionArea>
   );
 };

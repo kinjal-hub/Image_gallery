@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Typography, Card, CardMedia, Button, Box } from '@mui/material'; // Import Box for layout
+import { Container, Typography, Card, CardMedia, Button, Box } from '@mui/material'; 
 
 const ImageDetail = ({ imageId, onBackClick }) => {
   const [image, setImage] = useState(null);
@@ -52,7 +52,7 @@ const handleDeleteImage = async () => {
         
         setError(error);
         alert(`Failed to delete image: ${error.message}`);
-        setLoading(false); // Stop loading on error
+        setLoading(false); 
     }
 };
 

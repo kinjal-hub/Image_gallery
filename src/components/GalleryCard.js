@@ -6,10 +6,12 @@ import Typography from '@mui/material/Typography';
 import { useMainContext } from '../mainContext'; 
 
 const GalleryCard = ({ img, id, title, onClick }) => {
-  const { addFavoriteCard } = useMainContext(); 
+  const { addtoCart } = useMainContext(); 
 
-  const handleAddToFavorites = () => {
-    addFavoriteCard({ id, img, title }); 
+  const handleAddToFavorites = (e) => {
+    e.stopPropagation();
+    // console.log("Adding card id", id)
+    addtoCart({ id, img, title }); 
   };
 
   return (

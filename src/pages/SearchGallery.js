@@ -63,7 +63,7 @@ const SearchGallery = () => {
               <GalleryCard
                 img={item.img}
                 title={item.title}
-                id={item.id}
+                id={item._id}
                 onClick={() => alert(`Image ID: ${item.id}`)} // placeholder
               />
             </Grid>

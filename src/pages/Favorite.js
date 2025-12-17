@@ -1,29 +1,29 @@
 import { useContext } from "react";
 import { MainContext } from "../mainContext";
-import { Typography, Container, Grid} from '@mui/material';
-import GalleryCard from '../components/GalleryCard'; // Reusing GalleryCard for display
+import { Typography, Container, Grid } from '@mui/material';
+import GalleryCard from '../components/GalleryCard'; 
 
 const Favorite = () => {
-  const { favoriteCards } = useContext(MainContext);
-
+  const { cart } = useContext(MainContext);
+  console.log(cart)
   return (
     <Container maxWidth="lg" sx={{ py: 10 }}>
-      {favoriteCards.length === 0 ? (
+      {cart.length === 0 ? (
         <Typography align="center" sx={{ mt: 4 }}>
           Not any favorite images added yet.
         </Typography>
       ) : (
         <Grid container spacing={4} sx={{ mt: 2 }}>
-          {favoriteCards.map((item) => (
+          {cart.map((item) => (
             <Grid item key={item.id} xs={12} sm={6} md={4}>
               <GalleryCard
-              img={item.img}
-              title={item.title}
-              id={item.id}
-              onClick={() => alert(`Image ID: ${item.id}`)}
+               img={item.img}
+               title={item.title}
+               id={item.id} 
+               onClick={() => alert(`Image ID: ${item.id}`)}
               />
-              
-            </Grid>
+             
+              </Grid>
           ))}
         </Grid>
       )}

@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { useMainContext } from '../mainContext'; 
 
-const GalleryCard = ({ img, id, title, onClick }) => {
+const GalleryCard = ({ img, id, title, price, category, stock, rating, description, onClick }) => {
   const { addtoCart } = useMainContext(); 
 
   const handleAddToFavorites = (e) => {
@@ -30,10 +30,25 @@ const GalleryCard = ({ img, id, title, onClick }) => {
           <Typography variant="h6" component="div" sx={{ margin: 0, padding: 0 }}>
             {title}
           </Typography>
-          <Button size="small" variant='outlined' color='success' onClick={handleAddToFavorites}>
+          <Typography variant="h6" component="div" sx={{ margin: 0, padding: 0 }}>
+            {price}
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ margin: 0, padding: 0 }}>
+            {category}
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ margin: 0, padding: 0 }}>
+            {stock}
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ margin: 0, padding: 0 }}>
+            {rating}
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ margin: 0, padding: 0 }}>
+            {description}
+          </Typography>
+          <Button size="small" sx={{margin:1}} variant='outlined' color='success' onClick={handleAddToFavorites}>
             Add to favorite
           </Button>
-        </CardContent>
+          </CardContent>
         </Card>
     </CardActionArea>
   );

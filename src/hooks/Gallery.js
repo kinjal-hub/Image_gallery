@@ -1,86 +1,45 @@
 import { useState, useEffect } from 'react';
-import { Grid, Container, Typography } from '@mui/material';
-import GalleryCard from '../components/GalleryCard';
-import ImageDetail from '../components/ImageDetail';
+import { Grid, Container } from '@mui/material';
+import GalleryCard from './GalleryCard';
+import ImageDetail from './ImageDetail';
 
-const Gallery = () => {
+const GalleryPage = () => {
   const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // State to hold the ID of the selected image
   const [selectedImageId, setSelectedImageId] = useState(null);
 
+  // Fetch images for the gallery
   useEffect(() => {
-    const fetchGalleryData = async () => {
-      try {
-        const response = await fetch('http://localhost:8000/api/images');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setImages(data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchGalleryData();
+    fetch('http://localhost:8000/api/images')
+      .then(res => res.json())
+      .then(data => setImages(data));
   }, []);
 
-  // Use item._id instead of item.id when the data comes from Mongoose
-  const handleCardClick = (id) => {
-    setSelectedImageId(id);
-  };
-
-  const handleBackClick = () => {
-    setSelectedImageId(null);
-  };
-
-  if (loading) {
-    return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Typography variant="h6" align="center">Loading...</Typography>
-      </Container>
-    );
-  }
-
-  if (error) {
-    return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Typography variant="h6" align="center" color="error">Error: {error.message}</Typography>
-      </Container>
-    );
-  }
-
+  // If an image is selected, show the detail view
   if (selectedImageId) {
-    return <ImageDetail imageId={selectedImageId} onBackClick={handleBackClick} />;
+    return (
+      <ImageDetail 
+        imageId={selectedImageId} 
+        onBackClick={() => setSelectedImageId(null)} // Clear ID to go back
+      />
+    );
   }
 
+  // Otherwise, show the grid
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom align="center">
-        Image Gallery
-      </Typography>
-      <Grid container spacing={4}>
-        {images.length > 0 ? (
-          images.map((item) => (
-            <Grid item key={item._id} xs={12} sm={6} md={4}>
-              <GalleryCard
-                img={item.img}
-                title={item.title}
-                id={item._id} // Pass the _id to the GalleryCard
-                onClick={() => handleCardClick(item._id)} // Pass _id to the click handler
-              />
-            </Grid>
-          ))
-        ) : (
-          <Grid item xs={12}>
-            <Typography variant="h6" align="center">No images found.</Typography>
+    <Container>
+      <Grid container spacing={2}>
+        {images.map(img => (
+          <Grid item xs={12} sm={6} md={4} key={img.id}>
+            <GalleryCard 
+              {...img} 
+              onClick={setSelectedImageId} // Pass state setter
+            />
           </Grid>
-        )}
+        ))}
       </Grid>
     </Container>
   );
 };
 
-export default Gallery;
+export default GalleryPage;

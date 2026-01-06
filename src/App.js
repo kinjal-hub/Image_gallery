@@ -11,6 +11,7 @@ import CustomNavbar from './components/CustomNavbar';
 import Favorite from './pages/Favorite';
 import Contact from './pages/Contact';
 import Signin from './pages/Signin';
+import ImageDetail from './components/ImageDetail';
 
 
 const themes = [customTheme, customTheme1, customTheme2]; // Array of themes
@@ -32,6 +33,7 @@ function App() {
       <CustomNavbar />
       <Routes>
       <Route path="/" element={<SearchGallery />} />
+            <Route path="/image/:id" element={<ImageDetail />} />
             <Route path="/Home" element={<SearchGallery />} />
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/contact" element={<Contact />} />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, Typography, Card, CardMedia, Button, Box, CircularProgress } from '@mui/material';
+import { Container, Typography, Card, CardMedia, Button, Box, CircularProgress, Autocomplete } from '@mui/material';
 
 
 const ImageDetail = () => {
@@ -70,37 +70,43 @@ const ImageDetail = () => {
   }
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom align="center">
-        {image.title}
-      </Typography>
+    <Container maxWidth="xs" sx={{ py: 4, marginTop:8 }}>
+      
       <Card>
         <CardMedia
           component="img"
           image={image.img}
           alt={image.title}
           style={{ maxHeight: 400, objectFit: 'contain' }}
+          sx= {{ borderRadius: "20px"}}
+
         />
-        <Typography variant="h6" color="error.main" >
+        <Typography variant="h6"  gutterBottom align="center" textAlign="left" color="black" fontWeight="bold" >
+           {image.title}
+        </Typography>
+        <Typography variant="body1" fontFamily="cursive" textAlign={"left"} sx={{ mt:1, color:"black" }}>
           Stock: {image.stock}
         </Typography>
-        <Typography variant="h6" color="error.main" >
-          Rating: {image.rating}
+        <Typography variant="body1"  fontFamily="cursive" textAlign={"left"} sx={{ mt:1, color:"black" }}>
+          Rating: {image.rating} ★★★★★
         </Typography>
-        <Typography variant="h6" color="error.main" >
+        <Typography variant="body1"  fontFamily="cursive" textAlign={"left"} sx={{ mt:1, color:"black" }}>
+          Price: ₹{image.price}
+        </Typography>
+        <Typography variant="body1"  fontFamily="cursive" textAlign={"left"} sx={{ mt:1, color:"black" }}>
           Description: {image.description}
         </Typography>
         
-        <Typography variant="h6" color="error.main">
+        <Typography variant="body1"  fontFamily="cursive" textAlign={"left"} sx={{ mt:1, color:"black" }}>
                 Created: {new Date(image.createdAt).toLocaleString()}
         </Typography>
         
       </Card>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '15px' }}>
         <Button variant="contained" onClick={() => navigate('/')}>
           Back to Gallery
         </Button>
-        <Button variant="contained" color="error" onClick={handleDeleteImage}>
+        <Button variant="contained" color="primary" onClick={handleDeleteImage}>
           Delete Image
         </Button>
       </Box>

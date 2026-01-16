@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.card1 {
+  margin-top: 100px;
+  margin-left: 50px;
+  width: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  font-family: sans-serif;
+}
+
+.card1-image {
+  width: 100%;
+  height: 180px; /* Controlled height */
+  object-fit: cover; /* Ensures image isn't distorted */
+  display: block;
+}
+
+.card1-content {
+  padding: 16px;
+}
+
+yellow-star {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card1-content h4 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #000;
+  font-family: Calibri;
+  text-align: left;
+}
+
+.card1-content span:last-child {
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.profile-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}

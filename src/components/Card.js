@@ -22,7 +22,7 @@ const Card = () => {
   
   return (
     <div className="card">
-      <div className="image-container" >
+      <div className="image-container" style={{ transform: 'scale(1.1)', zIndex: 10 }}>
         <button className="nav-btn left" onClick={prevImage}>❮</button>
         <img src={images[Index]} alt="card-img" className="card-image" />
         <button className="nav-btn right" onClick={nextImage}>❯</button>

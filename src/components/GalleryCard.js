@@ -23,7 +23,9 @@ const GalleryCard = ({ img, id, title, price, category, stock, rating, descripti
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          borderRadius: "30px"
+          borderRadius: "30px",
+          margin: '5px',
+          padding:'5px'
         }}
       >
         <CardMedia
@@ -31,14 +33,14 @@ const GalleryCard = ({ img, id, title, price, category, stock, rating, descripti
         height={250}
         image={img}
         alt={title}
-        sx= {{ borderRadius: "20px"}}
+        sx= {{ borderRadius: "30px", padding: '1px', margin: '1px'}}
         />
         <CardContent>
-          <Typography variant="h6" component="div" sx={{ margin: 0, padding: 0 }}>
+          <Typography variant="h6" component="div" sx={{ margin: '1px', padding: '1px' }}>
             {title}
           </Typography>
           
-          <Button size="small" sx={{margin:1}} variant='contained'  onClick={handleAddToFavorites}>
+          <Button size="small" sx={{mb:'5px'}} variant='contained'  onClick={handleAddToFavorites}>
             Add to favorite
           </Button>
           </CardContent>

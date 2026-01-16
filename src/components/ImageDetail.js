@@ -72,37 +72,48 @@ const ImageDetail = () => {
   return (
     <Container maxWidth="xs" sx={{ py: 4, marginTop:8 }}>
       
-      <Card>
+      <Card sx={{ p: 2, borderRadius: "30px", margin: '5px',padding:'5px' }}>
         <CardMedia
           component="img"
           image={image.img}
           alt={image.title}
-          style={{ maxHeight: 400, objectFit: 'contain' }}
-          sx= {{ borderRadius: "20px"}}
+          style={{ maxHeight: 300, objectFit: 'contain' }}
+          sx= {{ borderRadius: "30px", mb:2}}
 
         />
         <Typography variant="h6"  gutterBottom align="center" textAlign="left" color="black" fontWeight="bold" >
            {image.title}
         </Typography>
-        <Typography variant="body1" fontFamily="cursive" textAlign={"left"} sx={{ mt:1, color:"black" }}>
-          Stock: {image.stock}
-        </Typography>
-        <Typography variant="body1"  fontFamily="cursive" textAlign={"left"} sx={{ mt:1, color:"black" }}>
-          Rating: {image.rating} ★★★★★
-        </Typography>
-        <Typography variant="body1"  fontFamily="cursive" textAlign={"left"} sx={{ mt:1, color:"black" }}>
-          Price: ₹{image.price}
-        </Typography>
-        <Typography variant="body1"  fontFamily="cursive" textAlign={"left"} sx={{ mt:1, color:"black" }}>
-          Description: {image.description}
-        </Typography>
-        
-        <Typography variant="body1"  fontFamily="cursive" textAlign={"left"} sx={{ mt:1, color:"black" }}>
-                Created: {new Date(image.createdAt).toLocaleString()}
-        </Typography>
-        
-      </Card>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '15px' }}>
+       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 }}>
+          <Typography variant="body1" fontFamily="cursive" color="black">Stock:</Typography>
+          <Typography variant="body1" fontFamily="cursive" color="black" textAlign="right">{image.stock}</Typography>
+       </Box>
+
+  
+       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 }}>
+          <Typography variant="body1" fontFamily="cursive" color="black">Rating:</Typography>
+          <Typography variant="body1" fontFamily="cursive" color="black" textAlign="right">{image.rating} ★★★★★</Typography>
+       </Box>
+
+  
+       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 }}>
+          <Typography variant="body1" fontFamily="cursive" color="black">Price:</Typography>
+          <Typography variant="body1" fontFamily="cursive" color="black" textAlign="right">₹{image.price}</Typography>
+       </Box>
+
+  
+       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 }}>
+          <Typography variant="body1" fontFamily="cursive" color="black">Description:</Typography>
+          <Typography variant="body1" fontFamily="cursive" color="black" textAlign="right">{image.description}</Typography>
+       </Box>
+
+  
+       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 , mb:2 }}>
+          <Typography variant="body1" fontFamily="cursive" color="black">Created:</Typography>
+          <Typography variant="body1" fontFamily="cursive" color="black" textAlign="right">{new Date(image.createdAt).toLocaleString()}</Typography>
+       </Box>
+</Card>
+<Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
         <Button variant="contained" onClick={() => navigate('/')}>
           Back to Gallery
         </Button>

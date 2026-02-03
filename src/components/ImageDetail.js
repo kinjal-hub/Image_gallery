@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, Typography, Card, CardMedia, Button, Box, CircularProgress, Autocomplete } from '@mui/material';
+import { Container, Typography, Card, CardMedia, Button, Box, CircularProgress, } from '@mui/material';
 
 
 const ImageDetail = () => {

@@ -29,7 +29,7 @@
           value={searchTerm}
           onChange={handleChange}
           sx={{
-          width: '80%', // Adjust width as needed
+          width: '70%',//  // Adjust width as needed
           maxWidth: 600, // Optional: set a maximum width
         }}
         />

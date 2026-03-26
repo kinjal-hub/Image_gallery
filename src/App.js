@@ -14,7 +14,6 @@ import Test from './pages/Test';
 
 
 
-
 const themes = [customTheme1, customTheme2, customTheme3]; // Array of themes
 function App() {
   const [currentThemeIndex, setCurrentThemeIndex] = useState(0);

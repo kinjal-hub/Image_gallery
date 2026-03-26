@@ -61,15 +61,16 @@ const SearchGallery = () => {
 
   if (loading) return <Typography align="center">Loading...</Typography>;
   if (error) return <Typography color="error" align="center">Error: {error}</Typography>;
-
+   
+  
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }} >
         <Typography variant="h4" align="center" gutterBottom>
           Searchable Gallery
         </Typography>
-        <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mb: 4, justifyContent: 'center' }}>
-          <Box sx={{ width: { xs: '100%', md: '40%' } }}>
+        <Stack direction={{ xs: 'column', md: 'row' }} spacing={1} sx={{ mt: 4 }} >
+          <Box sx={{ width: { xs: '100%', md: '50%' } }}>
             <SearchBar onSearch={handleSearch} />
           </Box>
           <DatePicker label="Start Date" value={startDate} onChange={(newValue) => setStartDate(newValue)} renderInput={(params) => <TextField {...params} fullWidth />} />
@@ -80,7 +81,7 @@ const SearchGallery = () => {
             No images found matching your criteria.
           </Typography>
         ) : (
-          <Grid container spacing={4} sx={{ mt: 2 }}>
+          <Grid container spacing={2} sx={{ mt: 2 }} justifyContent="center"> 
             {filteredImages.map((item) => (
               <Grid item key={item.id} xs={12} sm={6} md={4}>
                 <GalleryCard

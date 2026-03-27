@@ -77,11 +77,11 @@ const SearchGallery = () => {
           <DatePicker label="End Date" value={endDate} onChange={(newValue) => setEndDate(newValue)} renderInput={(params) => <TextField {...params} fullWidth />} />
         </Stack>
         {filteredImages.length === 0 ? (
-          <Typography align="center" sx={{ mt: 4 }}>
+          <Typography align="center" sx={{ mt: '70px' }}>
             No images found matching your criteria.
           </Typography>
         ) : (
-          <Grid container spacing={2} sx={{ mt: 2 }} justifyContent="center"> 
+          <Grid container spacing={2} gap={2} sx={{ mt: 2 }} justifyContent="center"> 
             {filteredImages.map((item) => (
               <Grid item key={item.id} xs={12} sm={6} md={4}>
                 <GalleryCard

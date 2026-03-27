@@ -1,15 +1,16 @@
-import { useContext } from "react"
-import MainContext from "../mainContext"
-
+import { Typography } from "@mui/material";
 
 const Signin = () => {
-  const { name } = useContext(MainContext)
+ 
   return (
     <div>
-        <h1 style={{ margin: '70px', padding: '10px' }}>This is Sign in Page.</h1>
-        <h2>Hello {name}</h2>
+         <Typography variant="h6"
+              sx={{ margin: '70px', padding: '10px', justifySelf:'center'}}>
+                This is Sign In Page.
+              </Typography>
+        <Typography>Hello</Typography>
     </div>
   )
 }
 
-export default Signin
+export default Signin;

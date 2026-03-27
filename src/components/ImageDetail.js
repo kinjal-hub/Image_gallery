@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, Typography, Card, CardMedia, Button, Box, CircularProgress, } from '@mui/material';
+import { Container, Typography, Card, CardMedia, Button, Box, CircularProgress, Stack } from '@mui/material';
 
 
 const ImageDetail = () => {
@@ -113,14 +113,20 @@ const ImageDetail = () => {
           <Typography variant="body1" fontFamily="cursive" color="black" textAlign="right">{new Date(image.createdAt).toLocaleString()}</Typography>
        </Box>
 </Card>
-<Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+       <Stack direction={{ xs: 'column', sm: 'row' }}
+            spacing={1}
+             sx= {{ display: 'flex',
+             justifyContent: 'space-between',
+             marginTop: '20px',
+            gap:'1'}}
+             >
         <Button variant="contained" onClick={() => navigate('/')}>
           Back to Gallery
         </Button>
         <Button variant="contained" color="primary" onClick={handleDeleteImage}>
           Delete Image
         </Button>
-      </Box>
+      </Stack>
     </Container>
   );
 };

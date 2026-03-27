@@ -6,13 +6,19 @@ import Typography from '@mui/material/Typography';
 import { useMainContext } from '../mainContext'; 
 
 const GalleryCard = ({ img, id, title, price, category, stock, rating, description, onClick }) => {
-  const { addtoCart } = useMainContext(); 
+  const { addtoCart, removeFromCart, isFavorite } = useMainContext(); 
+
+  const addedToFavorites = isFavorite(id);
 
   const handleAddToFavorites = (e) => {
     e.stopPropagation();
     // console.log("Adding card id", id)
-    addtoCart({ id, img, title }); 
-  };
+     if(isFavorite(id)) {
+      removeFromCart(id);
+     } else {
+          addtoCart({ id, img, title });
+     }
+   };
 
   return (
     <CardActionArea onClick={() => onClick(id)}>
@@ -40,8 +46,11 @@ const GalleryCard = ({ img, id, title, price, category, stock, rating, descripti
             {title}
           </Typography>
           
-          <Button size="small" sx={{mb:'5px'}} variant='contained'  onClick={handleAddToFavorites}>
-            Add to favorite
+          <Button size="small" sx={{mb:'5px'}} variant='contained' 
+           color={addedToFavorites ? "secondary" : "primary"}
+           onClick={handleAddToFavorites}
+          >
+            {addedToFavorites ? "Remove" : "Add to favorite"}
           </Button>
           </CardContent>
         </Card>

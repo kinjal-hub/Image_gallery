@@ -11,6 +11,8 @@ export const MainContextProvider = ({ children }) => {
   
   const [cart, setCart] = useState([]);
 
+  const isFavorite = (id) => cart.some(item => item.id === id);
+
   const findCardById = (cartArray, cardId) => {
   return cartArray.find(card => card.id === cardId);
 };
@@ -37,8 +39,12 @@ export const MainContextProvider = ({ children }) => {
     }
   };
 
+
+  const removeFromCart = (id) => {
+    setCart(prevcart => prevcart.filter(item => item.id !== id));
+};
   return (
-    <MainContext.Provider value={{  cart, addtoCart }}>
+    <MainContext.Provider value={{  cart, addtoCart, removeFromCart, isFavorite }}>
       {children}
     </MainContext.Provider>
   );

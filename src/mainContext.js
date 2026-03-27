@@ -11,8 +11,11 @@ export const MainContextProvider = ({ children }) => {
   
   const [cart, setCart] = useState([]);
 
-  const isFavorite = (id) => cart.some(item => item.id === id);
-
+  const isFavorite = (id) => 
+  {
+      cart.some(item => item.id === id);
+  }
+  
   const findCardById = (cartArray, cardId) => {
   return cartArray.find(card => card.id === cardId);
 };

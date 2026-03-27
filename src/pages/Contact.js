@@ -29,8 +29,8 @@ const Contact = () => {
         </Button>
         <Button
         variant="contained"
-        color="secondary"
-        onClick={() => setCount((prevcount) => prevcount - 1) }
+        color="primary"
+        onClick={() => setCount((prevcount) => prevcount ?  prevcount - 1 : 0) }
         >
           Decrement
         </Button>

@@ -68,7 +68,7 @@ const CustomNavbar = () => {
               color="inherit"
               aria-label="menu"
               onClick={toggleDrawer(true)}
-              sx={{ mr: 2 }}
+              sx={{ mr: 0.5  }}
             >
               <MenuIcon />
             </IconButton>
